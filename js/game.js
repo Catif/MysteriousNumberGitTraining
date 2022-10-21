@@ -6,16 +6,30 @@ const getNumber = document.querySelector("#number")
 const btnResult = document.querySelector("#btnResult")
 const displayNumber = document.querySelector("#displayNumber")
 
-function userEntry(){
+function init(){
     btnResult.addEventListener('click', function() {
-        return getNumber.value
+        if(plusOuMoins(getNumber.value) === 'plus'){
+            console.log('numéro plus grand !')
+        // let addLi = document.createElement("#li")
+        } else {
+            console.log('numéro moins grand !')
+        }
     })
 }
 
-let number = userEntry()
+function plusOuMoins(number){
+    if (number > 50){
+        return 'plus'
+    }
+    return 'moins'
+}
 
+if(number > generateRandomNumber()){
+    // displayNumber.appendChild(addLi)
+}
 
+console.log(generateRandomNumber())
 
 export default {
-    generateRandomNumber
+    init, generateRandomNumber
 }

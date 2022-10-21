@@ -2,6 +2,7 @@ import Mysterious from './game.js'
 
 let App = {
     init(){
+        Mysterious.init()
         console.log(Mysterious.generateRandomNumber(100))
     }
 }
