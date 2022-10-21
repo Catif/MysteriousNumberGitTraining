@@ -23,20 +23,20 @@ ________
 
 ## Différent Niveaux de développement
 
-### Niveau 1 ❌
-- Le jeu détermine un nombre aléatoire entre 1 et 99 grâce à la fonction suivante : ${RANDOM:0:2}
-- Le jeu demande à l’utilisateur un nombre entre 1 et 99.
+### Niveau 1 ❌ (JULIEN)
+- Le jeu détermine un nombre aléatoire entre 1 et 99 grâce à la fonction suivante : ${RANDOM:0:2} // DONE
+- Le jeu demande à l’utilisateur un nombre entre 1 et 99. 
 - Le jeu retourne si le nombre saisi est plus petit ou plus grand que le nombre mystère
 - Temps que ce nombre n’est pas trouvé, le jeu continue de demander un nombre à l’utilisateur
 - Une fois le nombre mystère trouvé, on affiche un message à l’utilisateur pour le féliciter et le nombre de coups nécessaires à la découverte du nombre.
 
-### Niveau 2 ❌
+### Niveau 2 ❌ (UGO)
 - Ajouter un système de high scores
 - Demander le nom du joueur qui vient de gagner
 - Enregistrer le nom des joueurs et les scores dans un fichier.
 - Afficher la position dans les high scores de la partie terminée. (Plusieurs solutions pour l'insertion dont "sed -i "3i textToInsert")
 
-### Niveau 3 ❌
+### Niveau 3 ❌ (BRADLEY)
 - Ajouter un Makefile avec plusieurs commandes
 - run : qui lance une partie
 - scores : qui affiche les scores dans la CLI
