@@ -1,0 +1,53 @@
+*{margin:0; padding:0; box-sizing: border-box;}
+
+body{
+    background-color: hsl(240, 20%, 90%);
+}
+
+header{
+    width: 100%;
+    background-color: hsl(240, 20%, 10%);
+
+    nav{
+        width: 90%;
+        max-width: 600px;
+        margin: auto;
+        
+        ul{
+            display: flex;
+            justify-content: space-between;
+
+            li {
+                display: block;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                
+                button{
+                    position: relative;
+                    $color: white;
+                    color: $color;
+                    padding: 5px;
+                    font-size: 18px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                    &.active::after, &::after{
+                        content:'';
+                        position: absolute;
+                        background-color: darken($color, 20);
+                        width: 0%;
+                        height: 2px;
+                        bottom: 0;
+                        left: 0;
+                        transition: width 0.2s ease;
+                        
+                        
+                    }
+                    &.active::after, &:hover::after{
+                        width: 100%;
+                    }
+                }
+            }
+        } 
+    }
+}
