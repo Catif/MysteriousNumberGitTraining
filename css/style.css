@@ -40,4 +40,7 @@ header {
           header nav ul li button.active::after, header nav ul li button:hover::after {
             width: 100%; }
 
-/*# sourceMappingURL=nav.css.map */
+.hide {
+  display: none; }
+
+/*# sourceMappingURL=style.css.map */

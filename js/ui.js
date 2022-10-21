@@ -1,19 +1,49 @@
-export let changeTab = (name) => {
+import Navbar from './navbar.js'
+
+const Home = document.querySelector('#MysteriousNumber')
+const Game = document.querySelector('#MysteriousNumber')
+const Scoreboard = document.querySelector('#MysteriousNumber')
+const Settings = document.querySelector('#MysteriousNumber')
+const More = document.querySelector('#MysteriousNumber')
+
+let actualEl = Home
+let tab = [Game, Scoreboard, Settings, More]
+
+let init = () => {
+
+
+    tab.forEach(element => {
+        element.classList.add('hide')
+    });
+}
+
+let changeTab = (name) => {
     switch (name){
         case 'Jeu':
-            console.log('Tab : Jeu')
+            showTab(name, Game)
             break;
         case 'Scoreboard':
-            console.log('Tab : Tableau des scores')
+            showTab(name, Scoreboard)
             break;
         case 'Parametre':
-            console.log('Tab : Paramètre')
+            showTab(name, Settings)
             break;
         case 'A propos':
-            console.log('Tab : A propos')
+            showTab(name, More)
             break;
         default:
-            console.log('Tab : Accueil')
+            showTab(name, Home)
             break;
     }
+}
+
+let showTab = (dataNav, el) => {
+    actualEl.classList.remove('hide')
+
+    Navbar.activeNavEl(dataNav)
+    el.classList.add('hide');
+}
+
+export default{
+    init, changeTab, showTab
 }
