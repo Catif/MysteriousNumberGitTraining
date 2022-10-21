@@ -1,10 +1,8 @@
-import {generateRandomNumber, askUser} from './game.js'
+import Mysterious from './game.js'
 
 let App = {
     init(){
-        console.log('it\'s work')
-
-        console.log(generateRandomNumber(100))
+        console.log(Mysterious.generateRandomNumber(100))
     }
 }
 
