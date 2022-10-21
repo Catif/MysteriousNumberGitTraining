@@ -5,30 +5,47 @@ let generateRandomNumber = function(max){
 const getNumber = document.querySelector("#number")
 const btnResult = document.querySelector("#btnResult")
 const displayNumber = document.querySelector("#displayNumber")
+let i = 0
 
 function init(){
     btnResult.addEventListener('click', function() {
-        if(plusOuMoins(getNumber.value) === 'plus'){
-            console.log('numéro plus grand !')
-        // let addLi = document.createElement("#li")
-        } else {
-            console.log('numéro moins grand !')
+
+        let createLi = document.createElement("li")
+        
+        function displayLi(result){
+            let appendLi = displayNumber.appendChild(createLi)
+            i = i + 1
+            if (result == true){
+                appendLi.append(`${getNumber.value} : il faut un nombre plus grand`)
+            } else if(result == false) {
+                appendLi.append(`${getNumber.value} : il faut un nombre plus petit`)
+            } else {
+                appendLi.append(`Vous avez trouvé le bon nombre : ${getNumber.value} au bout de ${i} essais`)
+            }
+
         }
+
+        function historicScore(){
+            if (!getNumber.value){
+                // let appendP = displayNumber.appendChild("#btnResult")
+                // appendP.append("test")
+            } else {
+                if(getNumber.value < 50){
+                    displayLi(true)
+                } else if(getNumber.value > 50) {
+                    displayLi(false)
+                } else {
+                    displayLi()
+                }
+            }
+                
+        }
+        
+        historicScore()
+
     })
 }
 
-function plusOuMoins(number){
-    if (number > 50){
-        return 'plus'
-    }
-    return 'moins'
-}
-
-if(number > generateRandomNumber()){
-    // displayNumber.appendChild(addLi)
-}
-
-console.log(generateRandomNumber())
 
 export default {
     init, generateRandomNumber
