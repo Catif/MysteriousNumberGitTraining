@@ -1,13 +1,13 @@
 import Navbar from './navbar.js'
 
 const Home = document.querySelector('#MysteriousNumber')
-const Game = document.querySelector('#MysteriousNumber')
-const Scoreboard = document.querySelector('#MysteriousNumber')
-const Settings = document.querySelector('#MysteriousNumber')
-const More = document.querySelector('#MysteriousNumber')
+// const Game = document.querySelector('#MysteriousNumber')
+// const Scoreboard = document.querySelector('#MysteriousNumber')
+// const Settings = document.querySelector('#MysteriousNumber')
+const More = document.querySelector('#More')
 
 let actualEl = Home
-let tab = [Game, Scoreboard, Settings, More]
+let tab = [More] // Game, Scoreboard, Settings,
 
 let init = () => {
 
@@ -38,10 +38,10 @@ let changeTab = (name) => {
 }
 
 let showTab = (dataNav, el) => {
-    actualEl.classList.remove('hide')
-
+    actualEl.classList.add('hide')
+    actualEl = el;
     Navbar.activeNavEl(dataNav)
-    el.classList.add('hide');
+    el.classList.remove('hide');
 }
 
 export default{
