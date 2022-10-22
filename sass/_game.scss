@@ -1,0 +1,23 @@
+#MysteriousNumber{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+
+
+#btnResult{
+    background-color: $b-color;
+    color: #ffff;
+    padding: 10px;
+    border-radius: 20px;
+    border-top: 30px;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: rgb(52, 56, 55);
+    }
+}
