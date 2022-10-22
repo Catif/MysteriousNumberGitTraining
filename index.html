@@ -4,12 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Mysterious number game</title>
-    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <ul id="list-nav">
+                <li><button class="active" data-nav="Accueil">Accueil</button></li>
+                <li><button data-nav="Jeu">Jeu</button></li>
+                <li><button data-nav="Scoreboard">Scoreboard</button></li>
+                <li><button data-nav="Parametre">Paramètre</button></li>
+                <li><button data-nav="A propos">A propos</button></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <div id="Home">
+        <h1>Bievenue sur Mysterious Number !</h1>
+    </div>
     
-    <div id="MystierousNumber">
+    <div id="MysteriousNumber">
         <p id="Information">Un nombre vient d'être généré aléatoirement</p>
         <div>
             <input type="number">
@@ -44,6 +63,41 @@
             </tbody>
         </table>
     </div>
+
+
+    <!-- <div id="More">
+        <h2>Equipe du site</h2>
+        <div id="Julien" class="box">
+            <div class="left">
+                <p class="name">Julien JOLIOT</p>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="https://github.com/J-Juliiien"><i class="bi bi-github"></i> J-Juliiien</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="Ugo" class="box">
+            <div class="left">
+                <p class="name">Ugo ZANZI</p>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="https://github.com/uzanzi"><i class="bi bi-github"></i> uzanzi</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="Bradley" class="box">
+            <div class="left">
+                <p class="name">Bradley BARBIER</p>
+            </div>
+            <div class="right">
+                <ul>
+                    <li><a href="https://github.com/Catif"><i class="bi bi-github"></i> Catif</a></li>
+                </ul>
+            </div>
+        </div>
+    </div> -->
     
     <script type="module" src="./js/app.js"></script>
 </body>
