@@ -2,6 +2,9 @@ let generateRandomNumber = function(max){
     return Math.floor(Math.random() * max)
 }
 
+let randomNumber = generateRandomNumber(100);
+console.log(randomNumber)
+
 const getNumber = document.querySelector("#number")
 const btnResult = document.querySelector("#btnResult")
 const displayNumber = document.querySelector("#displayNumber")
@@ -15,27 +18,35 @@ function init(){
         function displayLi(result){
             let appendLi = displayNumber.appendChild(createLi)
             i = i + 1
-            if (result == true){
-                appendLi.append(`${getNumber.value} : il faut un nombre plus grand`)
-            } else if(result == false) {
-                appendLi.append(`${getNumber.value} : il faut un nombre plus petit`)
-            } else {
-                appendLi.append(`Vous avez trouvé le bon nombre : ${getNumber.value} au bout de ${i} essais`)
+
+            switch (result){
+                case 'more':
+                    appendLi.append(`${getNumber.value} : il faut un nombre plus grand`)
+                    break;
+                case 'less':
+                    appendLi.append(`${getNumber.value} : il faut un nombre plus petit`)
+                    break;
+                case true:  
+                    appendLi.append(`Vous avez trouvé le bon nombre : ${getNumber.value} au bout de ${i} essais`)
+                    break;
+                case false:
+                    i = 0
+                    appendLi.append(`Veuillez entrer un nombre`)
+                    break;
             }
 
         }
 
         function historicScore(){
             if (!getNumber.value){
-                // let appendP = displayNumber.appendChild("#btnResult")
-                // appendP.append("test")
+                displayLi(false)
             } else {
-                if(getNumber.value < 50){
-                    displayLi(true)
-                } else if(getNumber.value > 50) {
-                    displayLi(false)
+                if(getNumber.value < randomNumber){
+                    displayLi('more')
+                } else if(getNumber.value > randomNumber) {
+                    displayLi('less')
                 } else {
-                    displayLi()
+                    displayLi(true)
                 }
             }
                 
