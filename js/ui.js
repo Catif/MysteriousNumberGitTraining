@@ -1,17 +1,17 @@
 import Navbar from './navbar.js'
 
-const Home = document.querySelector('#MysteriousNumber')
-// const Game = document.querySelector('#MysteriousNumber')
-// const Scoreboard = document.querySelector('#MysteriousNumber')
-// const Settings = document.querySelector('#MysteriousNumber')
-const More = document.querySelector('#More')
+// == Liste des différentes partie du site ==
+const Home = document.querySelector('#Home')
+const Game = document.querySelector('#MysteriousNumber')
+// const Scoreboard = document.querySelector('#Scoreboard')
+// const Settings = document.querySelector('#Settings')
+// const More = document.querySelector('#More')
 
 let actualEl = Home
-let tab = [More] // Game, Scoreboard, Settings,
+// == Ajouter dans le tableau, quand vous avez déclarer la variable au dessus ==
+let tab = [Game] // Scoreboard, Settings, More
 
 let init = () => {
-
-
     tab.forEach(element => {
         element.classList.add('hide')
     });
@@ -45,5 +45,5 @@ let showTab = (dataNav, el) => {
 }
 
 export default{
-    init, changeTab, showTab
+    init, changeTab
 }

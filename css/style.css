@@ -55,7 +55,4 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   width: 100%;
 }
 
-.hide {
-  display: none; }
-
 /*# sourceMappingURL=style.css.map */
