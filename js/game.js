@@ -31,7 +31,7 @@ function init(){
                     break;
                 case false:
                     i = 0
-                    appendLi.append(`Veuillez entrer un nombre`)
+                    appendLi.append(`Vous n'avez pas entré de nombre`)
                     break;
             }
 
@@ -59,5 +59,5 @@ function init(){
 
 
 export default {
-    init, generateRandomNumber
+    init
 }
