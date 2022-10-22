@@ -10,10 +10,6 @@ body {
   font-family: "Poppins", Arial, sans-serif;
 }
 
-.hide {
-  display: none;
-}
-
 header {
   width: 100%;
   background-color: hsl(240deg, 20%, 10%);
@@ -55,15 +51,40 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   width: 100%;
 }
 
-.displayRegisterName {
-  display: none;
+#Scoreboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#Scoreboard table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 20%;
+}
+#Scoreboard table td, #Scoreboard table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#Scoreboard table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+#Scoreboard table tr:hover {
+  background-color: #ddd;
+}
+#Scoreboard table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: hsl(240deg, 20%, 10%);
+  color: white;
 }
 
-.input {
-  width: 30%;
-  padding: 12px 20px;
+#pseudo {
+  width: 200px;
+  padding: 5px 10px;
   margin: 8px 0;
   box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .button {
@@ -83,4 +104,5 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   background-color: #4CAF50; /* Green */
   color: white;
 }
+
 /*# sourceMappingURL=style.css.map */

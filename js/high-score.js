@@ -1,4 +1,10 @@
-const divRegisterName = document.getElementById("displayRegisterName");
+let divHighScore = document.querySelector('#highScore')
+let button = document.querySelector(".button");
+
+button.addEventListener("click", function() {
+    registerGame();
+})
+
 
 function Game(name, score){
     this.name = name;
@@ -6,51 +12,45 @@ function Game(name, score){
 }
 
 const gamesListView = {
+    displayGame(game){
+        let row = document.createElement('tr');
+            
+        let tdName = row.appendChild(document.createElement('td'));
+        tdName.innerText = game.name;
+
+        let tdScore = row.appendChild(document.createElement('td'));
+        tdScore.innerText = game.score;
+
+        divHighScore.append(row);
+    },
     displayFullList(games) {
-        let divHighScore = document.getElementById("highScore");
         games.forEach((game) => {
-            let row = document.createElement('tr');
-            console.log(row)
-            let tdName = row.appendChild(document.createElement('td'));
-            let tdScore = row.appendChild(document.createElement('td'));
-            tdName.innerText = game.name;
-            tdScore.innerText = game.score;
-            divHighScore.append(row);
+            this.displayGame(game);
         })
     }
 }
 
-const gamesList = {
+export const gamesList = {
     games: [],
     addPlayer(game) {
         this.games.push(game);
     },
     save(){
-    localStorage.setItem("game", JSON.stringify(this.games));
+        localStorage.setItem("game", JSON.stringify(this.games));
     },
     getGames(){
         return this.games;
     },
     load(){
-    let games = JSON.parse(localStorage.getItem("game"));
+        let games = JSON.parse(localStorage.getItem("game"));
         if(games) {
             games.forEach((game) => {
                 let g = new Game(game.name, game.score)
                 this.games.push(g);
             })
+            gamesListView.displayFullList(this.getGames());
         }
-        return this.getGames();
     },
-}
-
-export const registerName = {
-    display(){
-        divRegisterName.classList.remove("displayRegisterName");
-    },
-
-    hide(){
-        divRegisterName.classList.add("displayRegisterName");
-    }
 }
 
 export function registerGame(){
@@ -60,7 +60,7 @@ export function registerGame(){
     gamesList.addPlayer(game);
     gamesList.save();
 
-    gamesListView.displayFullList(gamesList.games);
+    gamesListView.displayGame(game);
 }
 
 function getScore(score){
@@ -68,5 +68,5 @@ function getScore(score){
 }
 
 function getName(){
-    return document.querySelector(".input").value;
+    return document.querySelector("#pseudo").value;
 }
