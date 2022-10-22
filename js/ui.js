@@ -13,7 +13,7 @@ let tab = [Game] // Scoreboard, Settings, More
 
 let init = () => {
     tab.forEach(element => {
-        element.classList.add('hide')
+        element.setAttribute('style', 'display: none;')
     });
 }
 
@@ -38,10 +38,10 @@ let changeTab = (name) => {
 }
 
 let showTab = (dataNav, el) => {
-    actualEl.classList.add('hide')
+    actualEl.setAttribute('style', 'display: none;')
     actualEl = el;
     Navbar.activeNavEl(dataNav)
-    el.classList.remove('hide');
+    actualEl.setAttribute('style', '')
 }
 
 export default{
