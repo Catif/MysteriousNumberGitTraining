@@ -1,8 +1,8 @@
-.displayRegisterName {
+.displayRegisterName{
   display: none;
 }
 
-.input {
+.input{
   width: 30%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -21,10 +21,8 @@
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
+  &:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
 }
-.button:hover {
-  background-color: #4CAF50; /* Green */
-  color: white;
-}
-
-/*# sourceMappingURL=style.css.map */

@@ -1,12 +1,17 @@
 import Mysterious from './game.js'
-import {getName} from "./high-score.js";
+import {registerName} from "./high-score.js";
+import {registerGame} from "./high-score.js";
 
 let App = {
     init(){
         console.log(Mysterious.generateRandomNumber(100))
-        getName()
+        registerName.display();
+        let button = document.querySelector(".button");
+        button.addEventListener("click", function() {
+            registerGame();
+            registerName.hide();
+        })
     },
 }
-
 
 window.addEventListener('load', App.init)

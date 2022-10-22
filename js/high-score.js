@@ -1,11 +1,26 @@
 const divRegisterName = document.getElementById("displayRegisterName");
 
-function game(name, score){
+function Game(name, score){
     this.name = name;
     this.score = score;
 }
 
-const playersList = {
+const gamesListView = {
+    displayFullList(games) {
+        let divHighScore = document.getElementById("highScore");
+        games.forEach((game) => {
+            let row = document.createElement('tr');
+            console.log(row)
+            let tdName = row.appendChild(document.createElement('td'));
+            let tdScore = row.appendChild(document.createElement('td'));
+            tdName.innerText = game.name;
+            tdScore.innerText = game.score;
+            divHighScore.append(row);
+        })
+    }
+}
+
+const gamesList = {
     games: [],
     addPlayer(game) {
         this.games.push(game);
@@ -13,13 +28,22 @@ const playersList = {
     save(){
     localStorage.setItem("game", JSON.stringify(this.games));
     },
-
+    getGames(){
+        return this.games;
+    },
     load(){
-    let pseudos = JSON.parse(localStorage.getItem("game"))
+    let games = JSON.parse(localStorage.getItem("game"));
+        if(games) {
+            games.forEach((game) => {
+                let g = new Game(game.name, game.score)
+                this.games.push(g);
+            })
+        }
+        return this.getGames();
     },
 }
 
-const registerName = {
+export const registerName = {
     display(){
         divRegisterName.classList.remove("displayRegisterName");
     },
@@ -29,17 +53,20 @@ const registerName = {
     }
 }
 
-function registerGame(){
+export function registerGame(){
+    let score = getScore();
+    let name = getName();
+    let game = new Game(name, score);
+    gamesList.addPlayer(game);
+    gamesList.save();
 
+    gamesListView.displayFullList(gamesList.games);
 }
 
-function getScore(){
-    // TODO
+function getScore(score){
+    return score;
 }
 
-export function getName(){
-    let button = document.querySelector(".button");
-    button.addEventListener("click", function (evt) {
-        return document.querySelector(".input").value;
-    });
+function getName(){
+    return document.querySelector(".input").value;
 }
