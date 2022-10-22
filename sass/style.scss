@@ -1,3 +1,15 @@
-body {
-    background-color: rgb(212, 212, 212);
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{margin:0; padding:0; box-sizing: border-box;}
+body{
+    background-color: hsl(240, 20%, 90%);
+    font-family: 'Poppins', Arial, sans-serif;
 }
+
+.hide{
+    display: none;
+}
+
+@import 'nav';
+// @import 'more';
+
