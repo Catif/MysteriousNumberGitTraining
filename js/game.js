@@ -2,62 +2,54 @@ let generateRandomNumber = function(max){
     return Math.floor(Math.random() * max)
 }
 
-let randomNumber = generateRandomNumber(100);
-console.log(randomNumber)
-
 const getNumber = document.querySelector("#number")
 const btnResult = document.querySelector("#btnResult")
-const displayNumber = document.querySelector("#displayNumber")
-let i = 0
+const informationEl = document.querySelector("#Information")
 
-function init(){
-    btnResult.addEventListener('click', function() {
+let essais
+let randomNumber
 
-        let createLi = document.createElement("li")
-        
-        function displayLi(result){
-            let appendLi = displayNumber.appendChild(createLi)
-            i = i + 1
+btnResult.addEventListener('click', function() {
+    let numero = getNumber.value
+    game(numero)
+})
+getNumber.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        let numero = getNumber.value
+        game(numero)
+    }
+})
 
-            switch (result){
-                case 'more':
-                    appendLi.append(`${getNumber.value} : il faut un nombre plus grand`)
-                    break;
-                case 'less':
-                    appendLi.append(`${getNumber.value} : il faut un nombre plus petit`)
-                    break;
-                case true:  
-                    appendLi.append(`Vous avez trouvé le bon nombre : ${getNumber.value} au bout de ${i} essais`)
-                    break;
-                case false:
-                    i = 0
-                    appendLi.append(`Vous n'avez pas entré de nombre`)
-                    break;
-            }
+function run(){
+    randomNumber = generateRandomNumber(300)
+    essais = 0
 
-        }
+    console.log(randomNumber)
 
-        function historicScore(){
-            if (!getNumber.value){
-                displayLi(false)
-            } else {
-                if(getNumber.value < randomNumber){
-                    displayLi('more')
-                } else if(getNumber.value > randomNumber) {
-                    displayLi('less')
-                } else {
-                    displayLi(true)
-                }
-            }
-                
-        }
-        
-        historicScore()
-
-    })
+    displayMessage('Un nombre aléatoire vient d\'être généré par la machine !')
 }
+
+function game(numero){
+    if (Number.isInteger(numero)){
+        displayMessage('Vous n\'avez pas écris de nombre !')
+    } else {
+        essais++
+        if(numero < randomNumber){
+            displayMessage('Le chiffre est plus grand !')
+        } else if(numero > randomNumber) {
+            displayMessage('Le chiffre est plus petit !')
+        } else {
+            displayMessage(`Vous avez trouvé le bon chiffre en ${essais} essai(s).`)
+        }
+    }
+}
+
+function displayMessage(message){
+    informationEl.innerText = message
+}
+        
 
 
 export default {
-    init
+    run
 }

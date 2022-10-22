@@ -4,10 +4,10 @@ import Mysterious from './game.js'
 
 let App = {
     init(){
-        Mysterious.init()
         Navbar.createNavListener()
         UI.init()
-        
+
+        Mysterious.run()
     }
 }
 
