@@ -55,4 +55,29 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   width: 100%;
 }
 
+#MysteriousNumber {
+  margin: 20px;
+  text-align: center;
+}
+#MysteriousNumber div:first-of-type {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+
+#btnResult {
+  background-color: hsl(240deg, 20%, 10%);
+  color: white;
+  padding: 10px;
+  border-radius: 20px;
+  border-top: 30px;
+  cursor: pointer;
+}
+#btnResult:hover {
+  background-color: rgb(52, 56, 55);
+}
+
 /*# sourceMappingURL=style.css.map */

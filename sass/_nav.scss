@@ -1,6 +1,8 @@
+$b-color: hsl(240, 20%, 10%);
+
 header{
     width: 100%;
-    background-color: hsl(240, 20%, 10%);
+    background-color: $b-color;
 
     nav{
         width: 90%;
