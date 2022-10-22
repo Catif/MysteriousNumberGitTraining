@@ -55,4 +55,14 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   width: 100%;
 }
 
+#More {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#More #information {
+  display: flex;
+}
+
 /*# sourceMappingURL=style.css.map */
