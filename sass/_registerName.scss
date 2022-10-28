@@ -1,0 +1,57 @@
+#Scoreboard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 20%;
+
+    td, th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    tr:nth-child(even){background-color: #f2f2f2;}
+    tr:hover {background-color: #ddd;}
+
+    th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: hsl(240, 20%, 10%);
+      color: white;
+    
+    
+    }
+  }
+}
+
+
+// CSS TEMPORAIRE - LE TEMPS QUE JULIEN FINISSE SA PARTIE
+#pseudo{
+  width: 200px;
+  padding: 5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  &:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+  }
+}
