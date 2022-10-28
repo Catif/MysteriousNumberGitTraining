@@ -99,6 +99,7 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
 }
 #More #ProjectButton {
   margin-top: 10px;
+}
 #Scoreboard {
   display: flex;
   flex-direction: column;
