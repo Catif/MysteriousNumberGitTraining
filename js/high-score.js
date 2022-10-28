@@ -53,20 +53,10 @@ export const gamesList = {
     },
 }
 
-export function registerGame(){
-    let score = getScore();
-    let name = getName();
+export function registerGame(name, score){
     let game = new Game(name, score);
     gamesList.addPlayer(game);
     gamesList.save();
 
     gamesListView.displayGame(game);
-}
-
-function getScore(score){
-    return score;
-}
-
-function getName(){
-    return document.querySelector("#pseudo").value;
 }

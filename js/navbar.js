@@ -6,7 +6,7 @@ let createNavListener = () => {
     list.forEach(el => {
         el.addEventListener('click', (e) => {
             if (el != activeEl){
-                UI.changeTab(el.attributes.getNamedItem('data-nav').nodeValue)
+                UI.changeTab(el.attributes.getNamedItem('data-nav').value)
             }
         })
     })
@@ -14,7 +14,7 @@ let createNavListener = () => {
 
 let activeNavEl = (data) => {
     activeEl.classList.remove('active')
-    let el = Array.from(list).find((el) => el.attributes.getNamedItem('data-nav').nodeValue === data)
+    let el = Array.from(list).find((el) => el.attributes.getNamedItem('data-nav').value === data)
     el.classList.add('active')
     activeEl = el
 }

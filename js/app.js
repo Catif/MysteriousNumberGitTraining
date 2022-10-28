@@ -7,9 +7,7 @@ let App = {
     init(){
         Navbar.createNavListener()
         UI.init()
-
-        Mysterious.run()
-        
+                
         // Initiliasation du tableau des Scores
         gamesList.load()
     },

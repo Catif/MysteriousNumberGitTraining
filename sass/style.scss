@@ -6,13 +6,26 @@ body{
     font-family: 'Poppins', Arial, sans-serif;
 }
 
-@import 'nav';
-<<<<<<< HEAD
-// @import 'more';
-@import 'game';
+.button{
+    $bc: hsl(240, 20%, 10%);
+    display: inline-block;
+    text-align: center;
+    background-color: $bc;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 
-@import "registerName";
-=======
+    transition: background-color .25s ease, color .1s ease;
+
+    &:hover{
+        background-color: white;
+        color: $bc;
+    }
+}
+
+@import 'nav';
+@import 'game';
 @import 'more';
 @import "registerName";
->>>>>>> develop

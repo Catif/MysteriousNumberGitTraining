@@ -1,4 +1,5 @@
 import Navbar from './navbar.js'
+import {run} from './game.js'
 
 // == Liste des différentes partie du site ==
 const Home = document.querySelector('#Home')
@@ -7,9 +8,9 @@ const Scoreboard = document.querySelector('#Scoreboard')
 // const Settings = document.querySelector('#Settings')
 const More = document.querySelector('#More')
 
-let actualEl = Home
+let actualEl = Game
 // == Ajouter dans le tableau, quand vous avez déclarer la variable au dessus ==
-let tab = [Game, More, Scoreboard] // Settings
+let tab = [Home, More, Scoreboard] // Settings
 
 let init = () => {
     tab.forEach(element => {
@@ -17,22 +18,27 @@ let init = () => {
     });
 }
 
-let changeTab = (name) => {
+export let changeTab = (name) => {
     switch (name){
+        case 'Accueil':
+            showTab('Accueil', Home)
+            break;
         case 'Jeu':
-            showTab(name, Game)
+            showTab('Jeu', Game)
+            run()
             break;
         case 'Scoreboard':
-            showTab(name, Scoreboard)
+            showTab('Scoreboard', Scoreboard)
             break;
         case 'Parametre':
-            showTab(name, Settings)
+            showTab('Parametre', Settings)
             break;
         case 'A propos':
-            showTab(name, More)
+            showTab('A propos', More)
             break;
         default:
-            showTab(name, Home)
+            console.error('Nom de Tab non trouvé, redirection vers l\'accueil')
+            showTab('Accueil', Home)
             break;
     }
 }
