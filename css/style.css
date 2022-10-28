@@ -10,10 +10,6 @@ body {
   font-family: "Poppins", Arial, sans-serif;
 }
 
-.hide {
-  display: none;
-}
-
 header {
   width: 100%;
   background-color: hsl(240deg, 20%, 10%);
@@ -56,13 +52,53 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
 }
 
 #More {
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
-#More #information {
+#More h2 {
+  margin-bottom: 10px;
+}
+#More .box {
+  width: 90%;
+  max-width: 500px;
   display: flex;
+  justify-content: space-between;
+}
+#More .box .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}
+#More .box .right {
+  width: 40%;
+}
+#More .box .right ul li {
+  list-style: none;
+}
+#More .box .right ul li .githubButton {
+  width: 100%;
+}
+#More .githubButton {
+  display: inline-block;
+  text-align: center;
+  background-color: hsl(240deg, 20%, 10%);
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.1s ease;
+}
+#More .githubButton:hover {
+  background-color: white;
+  color: hsl(240deg, 20%, 10%);
+}
+#More #ProjectButton {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */
