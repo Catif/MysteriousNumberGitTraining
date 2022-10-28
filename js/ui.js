@@ -5,11 +5,11 @@ const Home = document.querySelector('#Home')
 const Game = document.querySelector('#MysteriousNumber')
 const Scoreboard = document.querySelector('#Scoreboard')
 // const Settings = document.querySelector('#Settings')
-// const More = document.querySelector('#More')
+const More = document.querySelector('#More')
 
 let actualEl = Home
 // == Ajouter dans le tableau, quand vous avez déclarer la variable au dessus ==
-let tab = [Game, Scoreboard] // Settings, More
+let tab = [Game, More, Scoreboard] // Settings
 
 let init = () => {
     tab.forEach(element => {
