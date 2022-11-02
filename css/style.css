@@ -10,6 +10,24 @@ body {
   font-family: "Poppins", Arial, sans-serif;
 }
 
+.button {
+  display: inline-block;
+  text-align: center;
+  background-color: hsl(240deg, 20%, 10%);
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  padding: 16px 32px;
+  font-size: 16px;
+  transition: background-color 0.25s ease, color 0.1s ease;
+}
+.button:hover {
+  background-color: white;
+  color: hsl(240deg, 20%, 10%);
+}
+
 header {
   width: 100%;
   background-color: hsl(240deg, 20%, 10%);
@@ -49,6 +67,24 @@ header nav ul li button.active::after, header nav ul li button::after {
 }
 header nav ul li button.active::after, header nav ul li button:hover::after {
   width: 100%;
+}
+
+#Home {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Home h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#Home p {
+  text-align: center;
+}
+#Home button {
+  margin-top: 20px;
 }
 
 #More {
@@ -100,6 +136,7 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
 #More #ProjectButton {
   margin-top: 10px;
 }
+
 #Scoreboard {
   display: flex;
   flex-direction: column;
@@ -134,24 +171,6 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   margin: 8px 0;
   box-sizing: border-box;
   border-radius: 4px;
-}
-
-.button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-.button:hover {
-  background-color: #4CAF50; /* Green */
-  color: white;
 }
 
 /*# sourceMappingURL=style.css.map */
