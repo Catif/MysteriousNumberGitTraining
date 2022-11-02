@@ -161,7 +161,10 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   padding: 8px;
 }
 #Scoreboard table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: hsl(240deg, 70%, 90%);
+}
+#Scoreboard table tr:nth-child(odd) {
+  background-color: hsl(240deg, 40%, 80%);
 }
 #Scoreboard table tr:hover {
   background-color: #ddd;

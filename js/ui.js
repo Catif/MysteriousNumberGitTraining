@@ -8,9 +8,9 @@ const Scoreboard = document.querySelector('#Scoreboard')
 // const Settings = document.querySelector('#Settings')
 const More = document.querySelector('#More')
 
-let actualEl = Game
+let actualEl = Home
 // == Ajouter dans le tableau, quand vous avez déclarer la variable au dessus ==
-let tab = [Home, More, Scoreboard] // Settings
+let tab = [Game, Scoreboard, More] // Settings
 
 let init = () => {
     tab.forEach(element => {

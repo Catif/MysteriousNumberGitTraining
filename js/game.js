@@ -46,7 +46,7 @@ export function run(){
     randomNumber = generateRandomNumber(100)
     essais = 0
 
-    console.log(randomNumber)
+    console.log(randomNumber) // Pour debug
 
     inGame.style.display = "block";
     getNumber.value = ''
