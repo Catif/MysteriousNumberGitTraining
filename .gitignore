@@ -1,2 +1,3 @@
 
-*.map
+.sass-cache/
+css/style.css.map

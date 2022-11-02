@@ -34,27 +34,24 @@
         <button id="LaunchGame" class="button">Jouez dès maintenant</button>
     </section>
     
-    <div id="MysteriousNumber">
-        <p id="Information">Un nombre vient d'être généré aléatoirement</p>
-        <div>
-            <input type="number">
-            <button>Valider</button>
-        </div>
-        <div>
-            <p>Derniers nombre envoyé :</p>
-            <ul>
-                <li><b>50</b> -> <b>-</b></li>
-                <li><b>30</b> -> <b>-</b></li>
-            </ul>
+
+    <section id="MysteriousNumber">
+        <p id="Information">Un nombre aléatoire vient d'être généré par la machine !</p>
+
+        <div id="inGame">
+            <input id="number" type="number">
+            <button class="button" id="btnResult" accesskey="enter">Valider</button>
         </div>
 
-        <div class="askPseudo">
+        <div id="endGame">
             <label for="pseudo">Entrez votre pseudo :</label>
-            <input type="text" placeholder="Pseudo" name="pseudo" id="pseudo">
+            <input  type="text" placeholder="Pseudo" name="pseudo" id="pseudo">
+            
+            <button type="submit" class="button" id="RegisterName">Enregistrer</button>
         </div>
 
-        <button type="submit" class="button">Enregistrer</button>
-    </div>
+    </section>
+
 
     <div id="Scoreboard">
         <table>
@@ -105,9 +102,9 @@
         </div>
 
         <a id="ProjectButton" class="githubButton" href="https://github.com/Catif/MysteriousNumberGitTraining">Github du projet</a>
-
     </section>
     
+
     <script type="module" src="./js/app.js"></script>
 </body>
 </html>

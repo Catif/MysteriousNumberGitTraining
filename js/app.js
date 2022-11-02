@@ -14,8 +14,7 @@ let App = {
         HomeButton.addEventListener('click', () => {
             UI.changeTab('Jeu')
         })
-        
-        
+
         // Initiliasation du tableau des Scores
         gamesList.load()
 
