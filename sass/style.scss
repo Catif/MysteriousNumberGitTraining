@@ -16,7 +16,6 @@ body{
     color: white;
     text-decoration: none;
     cursor: pointer;
-
     transition: background-color .25s ease, color .1s ease;
 
     &:hover{
@@ -26,6 +25,7 @@ body{
 }
 
 @import 'nav';
+@import 'home';
 @import 'game';
 @import 'more';
 @import "scoreboard";

@@ -67,6 +67,24 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   width: 100%;
 }
 
+#Home {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Home h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#Home p {
+  text-align: center;
+}
+#Home button {
+  margin-top: 20px;
+}
+
 #MysteriousNumber {
   margin-top: 20px;
   display: flex;
