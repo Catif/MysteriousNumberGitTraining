@@ -1,0 +1,37 @@
+#MysteriousNumber{
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    input{
+        $color: hsl(240, 20%, 10%);
+        width: 200px;
+        padding: 5px 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border-radius: 1.5rem;
+        border: 2px solid $color;
+
+        &#number{
+            width: 80px;
+            text-align: center;
+            appearance:none;
+        }    
+
+        
+        &:focus{
+            outline: none;
+            border-color: lighten($color: $color, $amount: 50)
+        }
+    }
+
+    #endGame{
+        display: none;
+    }
+}
+
+

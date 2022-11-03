@@ -10,6 +10,22 @@ body {
   font-family: "Poppins", Arial, sans-serif;
 }
 
+.button {
+  display: inline-block;
+  text-align: center;
+  background-color: hsl(240deg, 20%, 10%);
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.1s ease;
+}
+.button:hover {
+  background-color: white;
+  color: hsl(240deg, 20%, 10%);
+}
+
 header {
   width: 100%;
   background-color: hsl(240deg, 20%, 10%);
@@ -51,6 +67,103 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   width: 100%;
 }
 
+#Home {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Home h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#Home p {
+  text-align: center;
+}
+#Home button {
+  margin-top: 20px;
+}
+
+#MysteriousNumber {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+#MysteriousNumber input {
+  width: 200px;
+  padding: 5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 1.5rem;
+  border: 2px solid hsl(240deg, 20%, 10%);
+}
+#MysteriousNumber input#number {
+  width: 80px;
+  text-align: center;
+  appearance: none;
+}
+#MysteriousNumber input:focus {
+  outline: none;
+  border-color: #8585ad;
+}
+#MysteriousNumber #endGame {
+  display: none;
+}
+
+#More {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+#More h2 {
+  margin-bottom: 10px;
+}
+#More .box {
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+#More .box .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}
+#More .box .right {
+  width: 40%;
+}
+#More .box .right ul li {
+  list-style: none;
+}
+#More .box .right ul li .githubButton {
+  width: 100%;
+}
+#More .githubButton {
+  display: inline-block;
+  text-align: center;
+  background-color: hsl(240deg, 20%, 10%);
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.1s ease;
+}
+#More .githubButton:hover {
+  background-color: white;
+  color: hsl(240deg, 20%, 10%);
+}
+#More #ProjectButton {
+  margin-top: 10px;
+}
+
 #Scoreboard {
   display: flex;
   flex-direction: column;
@@ -66,7 +179,10 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   padding: 8px;
 }
 #Scoreboard table tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: hsl(240deg, 70%, 90%);
+}
+#Scoreboard table tr:nth-child(odd) {
+  background-color: hsl(240deg, 40%, 80%);
 }
 #Scoreboard table tr:hover {
   background-color: #ddd;
@@ -76,32 +192,6 @@ header nav ul li button.active::after, header nav ul li button:hover::after {
   padding-bottom: 12px;
   text-align: left;
   background-color: hsl(240deg, 20%, 10%);
-  color: white;
-}
-
-#pseudo {
-  width: 200px;
-  padding: 5px 10px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border-radius: 4px;
-}
-
-.button {
-  background-color: #4CAF50; /* Green */
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-.button:hover {
-  background-color: #4CAF50; /* Green */
   color: white;
 }
 

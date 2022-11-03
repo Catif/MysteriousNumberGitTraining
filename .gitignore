@@ -1,5 +1,3 @@
 
-css/style.css
-*.css
-*.xml
-.idea
+.sass-cache/
+css/style.css.map
