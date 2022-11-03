@@ -1,11 +1,6 @@
 let divHighScore = document.querySelector('#highScore')
 let button = document.querySelector(".button");
 
-button.addEventListener("click", function() {
-    registerGame();
-})
-
-
 function Game(name, score){
     this.name = name;
     this.score = score;
@@ -38,10 +33,11 @@ export const gamesList = {
     save(){
         localStorage.setItem("game", JSON.stringify(this.games));
     },
-    delGame(i){
+    delGame(){
         let games = JSON.parse(localStorage.getItem("game"));
-        games.splice(i, 1);
-        localStorage.setItem("list", JSON.stringify(games));
+        games.splice(games.length-1, 1)
+        return
+        // localStorage.setItem("game", JSON.stringify(games));
     },
     getGames(){
         return this.games;

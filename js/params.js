@@ -1,6 +1,13 @@
+import {registerGame} from "./high-score.js"
+import {gamesList} from "./high-score.js"
+
 const nbEssaisMax = 10
 const nbGamesToRegister = 10
-import {registerGame} from "./high-score.js"
+
+let button = document.querySelector(".button")
+button.addEventListener("click", function() {
+    registerScore(5)
+})
 
 export function essaisMax(nbEssais, nombreATrouver) {
     let remaningNumber = nbEssaisMax - nbEssais
@@ -14,32 +21,20 @@ export function essaisMax(nbEssais, nombreATrouver) {
     divRemaningNumber.append(p)
 }
 
-export function registerScore(pseudo){
+export function registerScore(currentScore) {
     let games = JSON.parse(localStorage.getItem("game"))
-    if (games){
-        let maxGameScore = 0
-        let nbGames = 0
-        let index = 0
-        games.forEach(game => {
-            if (game.name === pseudo){
-                nbGames = nbGames + 1
-                if (game.score > maxGameScore){
-                    maxGameScore = game.score
-                    index = nbGames
-                }
-            }
-        })
-        if (nbGames < nbGamesToRegister){
+    if (games === null) {
+        registerGame()
+    }else{
+        if (games.length < nbGamesToRegister) {
             registerGame()
-        }else if (nbGames === nbGamesToRegister){
-            if (currentGame.score < maxGameScore){
-                delGame(index)
+        } else if (games.length === nbGamesToRegister) {
+            let lastGame = games[games.length - 1]
+            if (currentScore <= lastGame.score) {
+                gamesList.delGame()
                 registerGame()
             }
         }
-    }else{
-        registerGame()
     }
 }
-
-// Si il y a des parties, on parcours les parties. Si le nom du jour match avec le pseudo, si le score de la partie est plus petit que la partie précédente, on la remplace par celle ci.
+    // supprimer la dernière, ajouter la nouvelle. Pas plus compliqué que ça.
