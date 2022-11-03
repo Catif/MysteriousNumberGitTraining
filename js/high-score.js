@@ -24,9 +24,9 @@ const gamesListView = {
         divHighScore.append(row);
     },
     displayFullList(games) {
-        games.forEach((game) => {
-            this.displayGame(game);
-        })
+        divHighScore.innerHTML = '';
+        games.forEach(game => this.displayGame(game));
+        games.sort((a, b) => a.score - b.score);
     }
 }
 
@@ -34,6 +34,7 @@ export const gamesList = {
     games: [],
     addPlayer(game) {
         this.games.push(game);
+        this.save();
     },
     save(){
         localStorage.setItem("game", JSON.stringify(this.games));
@@ -56,7 +57,5 @@ export const gamesList = {
 export function registerGame(name, score){
     let game = new Game(name, score);
     gamesList.addPlayer(game);
-    gamesList.save();
-
-    gamesListView.displayGame(game);
+    gamesListView.displayFullList(gamesList.getGames());
 }
