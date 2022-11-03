@@ -1,22 +1,23 @@
+let search = document.querySelector("#searchUser");
 let divHighScore = document.querySelector('#highScore')
-let button = document.querySelector(".button");
 
-button.addEventListener("click", function() {
-    registerGame();
+search.addEventListener("keyup", (e) => {
+    gamesListView.displayUserGame(e.target.value);
 })
 
 
 function Game(name, score){
+    this.place = 'none';
     this.name = name;
     this.score = score;
 }
 
 const gamesListView = {
-    displayGame(game, place = 1){
+    displayGame(game){
         let row = document.createElement('tr');
             
         let tdPlace = row.appendChild(document.createElement('td'));
-        tdPlace.innerText = place;
+        tdPlace.innerText = game.place;
 
         let tdName = row.appendChild(document.createElement('td'));
         tdName.innerText = game.name;
@@ -28,8 +29,17 @@ const gamesListView = {
     },
     displayFullList(games) {
         divHighScore.innerHTML = '';
-        games.sort((a, b) => a.score - b.score);
-        games.forEach((game, id) => this.displayGame(game, id+1));
+        games.forEach((game) => this.displayGame(game));
+    },
+    displayUserGame(nameSearch) {
+        let games = gamesList.getGames(); 
+        let gameFilter = games.filter(game => {
+            let name = game.name.toLowerCase();
+            if (name.includes(nameSearch.toLowerCase())) {
+                return game;
+            }
+        });
+        this.displayFullList(gameFilter);
     }
 }
 
@@ -37,6 +47,7 @@ export const gamesList = {
     games: [],
     addPlayer(game) {
         this.games.push(game);
+        this.setPlace();
         this.save();
     },
     save(){
@@ -45,6 +56,12 @@ export const gamesList = {
     getGames(){
         return this.games;
     },
+    setPlace(){
+        this.games.sort((a, b) => a.score - b.score);
+        this.games.forEach((game, index) => {
+            game.place = index + 1;
+        });
+    },
     load(){
         let games = JSON.parse(localStorage.getItem("game"));
         if(games) {
@@ -52,6 +69,7 @@ export const gamesList = {
                 let g = new Game(game.name, game.score)
                 this.games.push(g);
             })
+            this.setPlace();
             gamesListView.displayFullList(this.getGames());
         }
     },
