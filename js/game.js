@@ -86,5 +86,5 @@ function finishGame(){
 
 
 export default {
-    run
+    run, generateRandomNumber
 }
