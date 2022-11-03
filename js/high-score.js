@@ -32,11 +32,16 @@ const gamesListView = {
 
 export const gamesList = {
     games: [],
-    addPlayer(game) {
+    addGame(game) {
         this.games.push(game);
     },
     save(){
         localStorage.setItem("game", JSON.stringify(this.games));
+    },
+    delGame(i){
+        let games = JSON.parse(localStorage.getItem("game"));
+        games.splice(i, 1);
+        localStorage.setItem("list", JSON.stringify(games));
     },
     getGames(){
         return this.games;
@@ -57,9 +62,8 @@ export function registerGame(){
     let score = getScore();
     let name = getName();
     let game = new Game(name, score);
-    gamesList.addPlayer(game);
+    gamesList.addGame(game);
     gamesList.save();
-
     gamesListView.displayGame(game);
 }
 
