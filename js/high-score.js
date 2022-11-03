@@ -12,9 +12,12 @@ function Game(name, score){
 }
 
 const gamesListView = {
-    displayGame(game){
+    displayGame(game, place = 1){
         let row = document.createElement('tr');
             
+        let tdPlace = row.appendChild(document.createElement('td'));
+        tdPlace.innerText = place;
+
         let tdName = row.appendChild(document.createElement('td'));
         tdName.innerText = game.name;
 
@@ -25,8 +28,8 @@ const gamesListView = {
     },
     displayFullList(games) {
         divHighScore.innerHTML = '';
-        games.forEach(game => this.displayGame(game));
         games.sort((a, b) => a.score - b.score);
+        games.forEach((game, id) => this.displayGame(game, id+1));
     }
 }
 
