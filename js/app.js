@@ -17,12 +17,6 @@ let App = {
 
         // Initiliasation du tableau des Scores
         gamesList.load()
-
-        
-
-
-        // Temporaire
-        console.log(Mysterious.generateRandomNumber(100))
     },
 }
 
