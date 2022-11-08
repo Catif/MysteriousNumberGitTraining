@@ -38,6 +38,7 @@
     <section id="MysteriousNumber">
         
         <div id="inGame">
+
             <div id="sms-list">
     
             </div>
@@ -57,12 +58,9 @@
 
 
     <div id="Scoreboard">
-        <input type="search" id="searchUser" placeholder="Rechercher un joueur">
-
         <table>
             <thead>
                 <tr>
-                    <th>Place</th>
                     <th>Pseudo</th>
                     <th>Score</th>
                 </tr>
@@ -72,7 +70,27 @@
             </tbody>
         </table>
     </div>
-        
+
+    <section id="Settings">
+        <div>
+            <label for="nbAttempts">Nombre de tentative :
+                <input type="number" name="nbAttempts" id="nbAttempts">
+            </label>
+
+            <label for="nbGamesToRegister">Nombre de partie à enregistrer :
+                <input type="number" name="nbGamesToRegister" id="nbGamesToRegister">
+            </label>
+
+            <label for="nbCharacter">Nombre de caractères pour le pseudo :
+                <input type="number" name="nbCharacter" id="nbCharacter">
+            </label>
+
+            <button class="button" type="button" id="resetScoreBoard">Remettre à zéro le scoreboard</button>
+
+            <button class="button" type="button" id="buttonRegisterParams">Enregistrer</button>
+
+        </div>
+    </section>
 
     <section id="More">
         <h2>Equipe du site</h2>

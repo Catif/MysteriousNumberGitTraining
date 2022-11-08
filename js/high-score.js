@@ -1,13 +1,7 @@
-let search = document.querySelector("#searchUser");
-let divHighScore = document.querySelector('#highScore')
-
-search.addEventListener("keyup", (e) => {
-    gamesListView.displayUserGame(e.target.value);
-})
-
+let tbodyHighScore = document.querySelector('#highScore')
+let button = document.querySelector(".button");
 
 function Game(name, score){
-    this.place = 'none';
     this.name = name;
     this.score = score;
 }
@@ -16,42 +10,37 @@ const gamesListView = {
     displayGame(game){
         let row = document.createElement('tr');
             
-        let tdPlace = row.appendChild(document.createElement('td'));
-        tdPlace.innerText = game.place;
-
         let tdName = row.appendChild(document.createElement('td'));
         tdName.innerText = game.name;
 
         let tdScore = row.appendChild(document.createElement('td'));
         tdScore.innerText = game.score;
 
-        divHighScore.append(row);
+        tbodyHighScore.append(row);
     },
     displayFullList(games) {
-        divHighScore.innerHTML = '';
-        games.forEach((game) => this.displayGame(game));
-    },
-    displayUserGame(nameSearch) {
-        let games = gamesList.getGames(); 
-        let gameFilter = games.filter(game => {
-            let name = game.name.toLowerCase();
-            if (name.includes(nameSearch.toLowerCase())) {
-                return game;
-            }
-        });
-        this.displayFullList(gameFilter);
+        tbodyHighScore.innerHTML = "";
+        games.forEach((game) => {
+            this.displayGame(game);
+        })
     }
 }
 
 export const gamesList = {
     games: [],
-    addPlayer(game) {
+    isLoad: false,
+    addGame(game) {
         this.games.push(game);
         this.setPlace();
-        this.save();
     },
     save(){
         localStorage.setItem("game", JSON.stringify(this.games));
+    },
+    delGame(i){
+        let game = JSON.parse(localStorage.getItem("game"));
+        game.splice(i, 1)
+        this.games = game
+        localStorage.setItem("game", JSON.stringify(game));
     },
     getGames(){
         return this.games;
@@ -64,19 +53,23 @@ export const gamesList = {
     },
     load(){
         let games = JSON.parse(localStorage.getItem("game"));
-        if(games) {
-            games.forEach((game) => {
-                let g = new Game(game.name, game.score)
-                this.games.push(g);
-            })
-            this.setPlace();
-            gamesListView.displayFullList(this.getGames());
+        if (this.isLoad === false){
+            if(games) {
+                games.forEach((game) => {
+                    let g = new Game(game.name, game.score)
+                    this.games.push(g);
+                })
+            }
+            this.isLoad = true;
         }
+        gamesListView.displayFullList(this.getGames());
     },
 }
 
 export function registerGame(name, score){
     let game = new Game(name, score);
-    gamesList.addPlayer(game);
-    gamesListView.displayFullList(gamesList.getGames());
+    gamesList.addGame(game);
+    gamesList.setPlace();
+    gamesList.save();
+    gamesListView.displayGame(game);
 }

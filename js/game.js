@@ -1,5 +1,6 @@
-import { registerGame } from './high-score.js'
 import {changeTab} from './ui.js'
+import {registerScore} from './params.js'
+import {essaisMax} from './params.js'
 
 let generateRandomNumber = function(max){
     return Math.floor(Math.random() * max)
@@ -33,28 +34,42 @@ getNumber.addEventListener('keyup', (e) => {
 nameInput.addEventListener('keyup', (e) => {
     if (e.key === 'Enter' || e.keyCode === 13) {
         let name = nameInput.value
-        registerGame(name, essais)
-        changeTab('Scoreboard')
+        let params = JSON.parse(localStorage.getItem("params"))
+        if (name.length > params[2]) {
+            let divEndDiv = document.getElementById('endGame')
+            let p = document.createElement('p')
+            p.innerText = 'Le pseudo doit être contenir au maximum : ' + params[2] + " caractères."
+            divEndDiv.append(p)
+        } else if (name.length <= params[2]) {
+            registerScore(name, essais)
+            changeTab('Scoreboard')
+        }
     }
 })
+
 registerName.addEventListener('click', () => {
     let name = nameInput.value
-    registerGame(name, essais)
-    changeTab('Scoreboard')
+    let params = JSON.parse(localStorage.getItem("params"))
+    if (name.length > params[2]){
+        let pEndDiv = document.getElementById('error')
+        pEndDiv.innerText = 'Le pseudo doit être contenir au maximum ' + params[2] + " caractères."
+    }else if (name.length <= params[2]){
+        registerScore(name, essais)
+        changeTab('Scoreboard')
+    }
 })
 
 export function run(){
     randomNumber = generateRandomNumber(100)
     essais = 0
-
     console.log(randomNumber) // Pour debug
 
     formNumber.style = "";
     getNumber.value = ''
     formName.style.display = "none";
-    nameInput.value = ''
-    
+    nameInput.value = ''    
     smsList.innerHTML = ''
+
     setTimeout(() => createSMS('bot', `Le nombre a été généré !`), 300)
 }
 
@@ -64,14 +79,24 @@ function game(numero){
     } else {
         essais++
         getNumber.value = ''
+        let EssaiRemaining = essaisMax(essais)
         createSMS('user', `Je pense que c'est ${numero} !`)
-        if(numero < randomNumber){
-            setTimeout(() => createSMS('bot', `Le nombre est plus grand !`), 300)
-        } else if(numero > randomNumber) {
-            setTimeout(() => createSMS('bot', `Le nombre est plus petit !`), 300)
-        } else {
-            setTimeout(() => createSMS('bot', `Bravo ! Vous avez trouvé le nombre en ${essais} essais !`), 300)
-            finishGame()
+        if (EssaiRemaining >= 0){
+            if(numero < randomNumber){
+                setTimeout(() => createSMS('bot', `Le nombre est plus grand ! (Il vous reste ${EssaiRemaining} essais)`), 300)
+            } else if(numero > randomNumber) {
+                setTimeout(() => createSMS('bot', `Le nombre est plus petit ! (Il vous reste ${EssaiRemaining} essais)`), 300)
+            } else {
+                setTimeout(() => createSMS('bot', `Bravo ! Vous avez trouvé le nombre en ${essais} essais !`), 300)
+                finishGame()
+                return null // stop the function
+            }
+        }
+        if (EssaiRemaining == 0){
+            setTimeout(() => createSMS('bot', `Vous avez perdu par car vous avez utilisé trop d'essais !`), 1000)
+            setTimeout(() => createSMS('bot', `Le nombre était ${randomNumber} !`), 3000)
+            setTimeout(() => createSMS('bot', `Vous allez être redirigé vers l'accueil`), 4500)
+            setTimeout(() => changeTab('Accueil'), 7000)
         }
     }
 }
@@ -92,9 +117,7 @@ function finishGame(){
     formName.style = "";
     nameInput.value = ''
 }
-        
-
 
 export default {
-    run, generateRandomNumber
+    run
 }
