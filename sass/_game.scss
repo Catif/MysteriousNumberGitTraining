@@ -1,3 +1,5 @@
+$color: hsl(240, 20%, 10%);
+
 #MysteriousNumber{
     margin-top: 20px;
 
@@ -8,7 +10,6 @@
     gap: 10px;
 
     input{
-        $color: hsl(240, 20%, 10%);
         width: 200px;
         padding: 5px 10px;
         margin: 8px 0;
@@ -29,9 +30,70 @@
         }
     }
 
-    #endGame{
-        display: none;
-    }
 }
 
 
+#inGame{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 3px solid $color;
+    width: 95%;
+    max-width: 600px;
+    height: 25rem;
+    border-radius: .5rem;
+    overflow: hidden;
+
+    #sms-list{
+        flex-grow:1;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        
+        width: 100%;
+        height: 50px;
+        border-bottom: 3px solid $color;
+        background-color: hsl(240, 20%, 15%);
+        overflow-y: scroll;
+        padding: 5px;
+
+        &::-webkit-scrollbar{
+            width: 0;
+        }
+
+        .sms {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 12px 12px;
+            flex-basis: fit-content;
+            max-width: 42%;
+
+            &.bot{
+                border-radius: 0 1rem 1rem 1rem;
+                background-color: rgb(139, 199, 255);
+            }
+
+            &.user{
+                margin-left: auto;
+                border-radius: 1rem 0 1rem 1rem;
+                background-color: rgb(149, 255, 139);
+            }
+        }
+    }
+
+    #form{
+        background-color: hsl(240, 10%, 40%);
+        width: 100%;
+        display: flex;
+        justify-content: right;
+        height: fit-content;
+        padding: 5px;
+        gap: 10px;
+        align-items: center;
+        
+        #btnResult{
+            height: 29px;
+        }
+    }
+}

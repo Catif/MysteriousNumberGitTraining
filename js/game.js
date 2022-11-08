@@ -6,13 +6,14 @@ let generateRandomNumber = function(max){
     return Math.floor(Math.random() * max)
 }
 
-const informationEl = document.querySelector("#Information")
 
-const inGame = document.querySelector("#inGame");
+const smsList = document.querySelector('#sms-list')
+
+const formNumber = document.querySelector('#FormNumber')
 const getNumber = document.querySelector("#number")
 const btnResult = document.querySelector("#btnResult")
 
-const endGame = document.querySelector("#endGame");
+const formName = document.querySelector('#FormName')
 const nameInput = document.querySelector("#pseudo")
 const registerName = document.querySelector("#RegisterName")
 
@@ -63,43 +64,51 @@ export function run(){
     essais = 0
     console.log(randomNumber) // Pour debug
 
-    inGame.style.display = "block";
+    formNumber.style = "";
     getNumber.value = ''
-    endGame.style.display = "none";
+    formName.style.display = "none";
     nameInput.value = ''
     
-    displayMessage('Un nombre aléatoire vient d\'être généré par la machine !')
     essaisMax(essais, randomNumber)
+    smsList.innerHTML = ''
+    setTimeout(() => createSMS('bot', `Le nombre a été généré !`), 300)
 }
 
 function game(numero){
-    if (Number.isInteger(numero)){
-        displayMessage('Vous n\'avez pas écris de nombre !')
+    if (numero === ''){
+        createSMS('bot', `Vous n'avez pas écris de nombre !`)
     } else {
         essais++
         getNumber.value = ''
         essaisMax(essais, randomNumber)
+        createSMS('user', `Je pense que c'est ${numero} !`)
         if(numero < randomNumber){
-            displayMessage(`Le chiffre est plus grand ! (dernier nombre : ${numero}) `)
+            setTimeout(() => createSMS('bot', `Le nombre est plus grand !`), 300)
         } else if(numero > randomNumber) {
-            displayMessage(`Le chiffre est plus petit ! (dernier nombre : ${numero}) `)
+            setTimeout(() => createSMS('bot', `Le nombre est plus petit !`), 300)
         } else {
-            let divRemaningNumber = document.getElementById("remaningNumber")
-            divRemaningNumber.innerHTML = ""
             displayMessage(`Vous avez trouvé le bon chiffre en ${essais} essai(s).`)
+            setTimeout(() => createSMS('bot', `Bravo ! Vous avez trouvé le nombre en ${essais} essais !`), 300)
             finishGame()
         }
     }
 }
 
-function displayMessage(message){
-    informationEl.innerText = message
+function createSMS(who, message){
+    let sms = document.createElement('div')
+    sms.classList.add('sms', who)
+    sms.innerHTML = `<p>${message}</p>`
+    smsList.appendChild(sms)
+    smsList.scrollTop = smsList.scrollHeight
 }
 
 function finishGame(){
-    inGame.style.display = "none";
+    setTimeout(() => createSMS('bot', `Veuillez entrer votre pseudo pour entrer dans le classement !`), 300)
+
+    formNumber.style.display = "none";
+    getNumber.value = ''
+    formName.style = "";
     nameInput.value = ''
-    endGame.style.display = "block";
 }
 
 export default {
