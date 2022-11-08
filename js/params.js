@@ -1,40 +1,76 @@
 import {registerGame} from "./high-score.js"
 import {gamesList} from "./high-score.js"
 
-const nbEssaisMax = 10
-const nbGamesToRegister = 10
+let nbEssaisMax = 0
+let nbGamesToRegister = 0
+let nbCharacter = 0
 
-let button = document.querySelector(".button")
-button.addEventListener("click", function() {
-    registerScore(5)
+let buttonRegisterParams = document.getElementById("buttonRegisterParams")
+buttonRegisterParams.addEventListener("click", function () {
+    registerParams()
 })
+
+let params = JSON.parse(localStorage.getItem("params"))
+if (params !== null){
+    nbEssaisMax = params[0]
+    nbGamesToRegister = params[1]
+    nbCharacter = params[2]
+    let inputNbEssaisMax = document.getElementById('nbAttempts')
+    inputNbEssaisMax.value = nbEssaisMax
+    let inputNbGamesToRegister = document.getElementById('nbGamesToRegister')
+    inputNbGamesToRegister.value = nbGamesToRegister
+    let inputNbCharacter = document.getElementById('nbCharacter')
+    inputNbCharacter.value = nbCharacter
+}
 
 export function essaisMax(nbEssais, nombreATrouver) {
     let remaningNumber = nbEssaisMax - nbEssais
     let divRemaningNumber = document.getElementById("remaningNumber")
+    divRemaningNumber.innerText = ""
     let p = document.createElement("p")
+    p.innerText = "Vous avez " + remaningNumber + " tentatives."
     if (nbEssais < nbEssaisMax){
         p.innerText = "Il vous reste : " + remaningNumber + " essais"
-    }else if (nbEssais === nbEssaisMax){
+    }else if (nbEssais == nbEssaisMax){
         p.innerText = "Vous n'avez plus d'essai, dommage ! Le nombre à trouvé était le nombre : " + nombreATrouver
+        document.querySelector('#inGame').style.display = "none"
     }
     divRemaningNumber.append(p)
 }
 
-export function registerScore(currentScore) {
+export function registerScore(name, score) {
     let games = JSON.parse(localStorage.getItem("game"))
     if (games === null) {
-        registerGame()
+        registerGame(name, score)
     }else{
         if (games.length < nbGamesToRegister) {
-            registerGame()
-        } else if (games.length === nbGamesToRegister) {
-            let lastGame = games[games.length - 1]
-            if (currentScore <= lastGame.score) {
-                gamesList.delGame()
-                registerGame()
+            registerGame(name, score)
+        }else if (games.length == nbGamesToRegister) {
+            let maxScore = 0
+            let index = 0
+            let gameToRemove
+            games.forEach(game => {
+                if (game.score > maxScore){
+                    maxScore = game.score
+                    gameToRemove = index
+                    index = index + 1
+                }
+            })
+            if (score <= maxScore){
+                registerGame(name, score)
+                gamesList.delGame(gameToRemove)
             }
         }
     }
 }
-    // supprimer la dernière, ajouter la nouvelle. Pas plus compliqué que ça.
+
+export function registerParams(){
+    let params = [];
+    nbEssaisMax = document.getElementById("nbAttempts").value
+    nbGamesToRegister = document.getElementById("nbGamesToRegister").value
+    nbCharacter = document.getElementById("nbCharacter").value
+    params.push(nbEssaisMax)
+    params.push(nbGamesToRegister)
+    params.push(nbCharacter)
+    localStorage.setItem("params", JSON.stringify(params))
+}

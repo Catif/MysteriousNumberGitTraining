@@ -49,6 +49,7 @@
             <input  type="text" placeholder="Pseudo" name="pseudo" id="pseudo">
             
             <button type="submit" class="button" id="RegisterName">Enregistrer</button>
+            <p id="error"></p>
         </div>
 
     </section>
@@ -67,7 +68,25 @@
             </tbody>
         </table>
     </div>
-        
+
+    <section id="Settings">
+        <div>
+            <label for="nbAttempts">Nombre de tentative :
+                <input type="number" name="nbAttempts" id="nbAttempts">
+            </label>
+
+            <label for="nbGamesToRegister">Nombre de partie à enregistrer :
+                <input type="number" name="nbGamesToRegister" id="nbGamesToRegister">
+            </label>
+
+            <label for="nbCharacter">Nombre de caractères pour le pseudo :
+                <input type="number" name="nbCharacter" id="nbCharacter">
+            </label>
+
+            <button class="button" type="button" id="buttonRegisterParams">Enregistrer</button>
+
+        </div>
+    </section>
 
     <section id="More">
         <h2>Equipe du site</h2>

@@ -1,5 +1,8 @@
 import { registerGame } from './high-score.js'
 import {changeTab} from './ui.js'
+import {registerScore} from './params.js'
+import {gamesList} from "./high-score.js"
+import {essaisMax} from './params.js'
 
 let generateRandomNumber = function(max){
     return Math.floor(Math.random() * max)
@@ -32,20 +35,34 @@ getNumber.addEventListener('keyup', (e) => {
 nameInput.addEventListener('keyup', (e) => {
     if (e.key === 'Enter' || e.keyCode === 13) {
         let name = nameInput.value
-        registerGame(name, essais)
-        changeTab('Scoreboard')
+        let params = JSON.parse(localStorage.getItem("params"))
+        if (name.length > params[2]) {
+            let divEndDiv = document.getElementById('endGame')
+            let p = document.createElement('p')
+            p.innerText = 'Le pseudo doit être contenir au maximum : ' + params[2] + " caractères."
+            divEndDiv.append(p)
+        } else if (name.length <= params[2]) {
+            registerScore(name, essais)
+            changeTab('Scoreboard')
+        }
     }
 })
+
 registerName.addEventListener('click', () => {
     let name = nameInput.value
-    registerGame(name, essais)
-    changeTab('Scoreboard')
+    let params = JSON.parse(localStorage.getItem("params"))
+    if (name.length > params[2]){
+        let pEndDiv = document.getElementById('error')
+        pEndDiv.innerText = 'Le pseudo doit être contenir au maximum ' + params[2] + " caractères."
+    }else if (name.length <= params[2]){
+        registerScore(name, essais)
+        changeTab('Scoreboard')
+    }
 })
 
 export function run(){
     randomNumber = generateRandomNumber(100)
     essais = 0
-
     console.log(randomNumber) // Pour debug
 
     inGame.style.display = "block";
@@ -54,6 +71,7 @@ export function run(){
     nameInput.value = ''
     
     displayMessage('Un nombre aléatoire vient d\'être généré par la machine !')
+    essaisMax(essais, randomNumber)
 }
 
 function game(numero){
@@ -62,11 +80,14 @@ function game(numero){
     } else {
         essais++
         getNumber.value = ''
+        essaisMax(essais, randomNumber)
         if(numero < randomNumber){
             displayMessage(`Le chiffre est plus grand ! (dernier nombre : ${numero}) `)
         } else if(numero > randomNumber) {
             displayMessage(`Le chiffre est plus petit ! (dernier nombre : ${numero}) `)
         } else {
+            let divRemaningNumber = document.getElementById("remaningNumber")
+            divRemaningNumber.innerHTML = ""
             displayMessage(`Vous avez trouvé le bon chiffre en ${essais} essai(s).`)
             finishGame()
         }
@@ -82,8 +103,6 @@ function finishGame(){
     nameInput.value = ''
     endGame.style.display = "block";
 }
-        
-
 
 export default {
     run
