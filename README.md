@@ -28,7 +28,7 @@ ________
   - Paramètre : Affiche les paramètres du jeu / Gestion des données
   - A propos : Montre les informations lié au site
 
-### Niveau 4 ❌ (Ugo)
+### Niveau 4 ✔️ (Ugo)
 - Création d'une page Paramètre :
   - Nombres d’essais maximums
   - Nombres maximums de scores enregistrés
