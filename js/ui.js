@@ -26,10 +26,6 @@ export let changeTab = (name) => {
             showTab('Accueil', Home)
             break;
         case 'Jeu':
-            const pEndDiv = document.getElementById('error')
-            pEndDiv.innerText = ""
-            document.querySelector('#inGame').style.display = "inline"
-            remaningNumber.innerHTML = ""
             showTab('Jeu', Game)
             run()
             break;

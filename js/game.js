@@ -67,10 +67,9 @@ export function run(){
     formNumber.style = "";
     getNumber.value = ''
     formName.style.display = "none";
-    nameInput.value = ''
-    
-    essaisMax(essais, randomNumber)
+    nameInput.value = ''    
     smsList.innerHTML = ''
+
     setTimeout(() => createSMS('bot', `Le nombre a été généré !`), 300)
 }
 
@@ -80,16 +79,24 @@ function game(numero){
     } else {
         essais++
         getNumber.value = ''
-        essaisMax(essais, randomNumber)
+        let EssaiRemaining = essaisMax(essais)
         createSMS('user', `Je pense que c'est ${numero} !`)
-        if(numero < randomNumber){
-            setTimeout(() => createSMS('bot', `Le nombre est plus grand !`), 300)
-        } else if(numero > randomNumber) {
-            setTimeout(() => createSMS('bot', `Le nombre est plus petit !`), 300)
-        } else {
-            displayMessage(`Vous avez trouvé le bon chiffre en ${essais} essai(s).`)
-            setTimeout(() => createSMS('bot', `Bravo ! Vous avez trouvé le nombre en ${essais} essais !`), 300)
-            finishGame()
+        if (EssaiRemaining >= 0){
+            if(numero < randomNumber){
+                setTimeout(() => createSMS('bot', `Le nombre est plus grand ! (Il vous reste ${EssaiRemaining} essais)`), 300)
+            } else if(numero > randomNumber) {
+                setTimeout(() => createSMS('bot', `Le nombre est plus petit ! (Il vous reste ${EssaiRemaining} essais)`), 300)
+            } else {
+                setTimeout(() => createSMS('bot', `Bravo ! Vous avez trouvé le nombre en ${essais} essais !`), 300)
+                finishGame()
+                return null // stop the function
+            }
+        }
+        if (EssaiRemaining == 0){
+            setTimeout(() => createSMS('bot', `Vous avez perdu par car vous avez utilisé trop d'essais !`), 1000)
+            setTimeout(() => createSMS('bot', `Le nombre était ${randomNumber} !`), 3000)
+            setTimeout(() => createSMS('bot', `Vous allez être redirigé vers l'accueil`), 4500)
+            setTimeout(() => changeTab('Accueil'), 7000)
         }
     }
 }
