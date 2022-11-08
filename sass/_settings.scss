@@ -1,0 +1,22 @@
+#Settings{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+  & div {
+    padding: 5px;
+    #nbGamesToRegister{
+      width: 100%;
+    }
+
+    #nbAttempts{
+      width: 100%;
+    }
+
+    #nbCharacter{
+      width: 100%;
+    }
+  }
+}
+

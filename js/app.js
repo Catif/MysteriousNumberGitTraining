@@ -1,10 +1,18 @@
-import Mysterious from './game.js'
+import Navbar from './navbar.js'
+import UI from './ui.js'
+import {gamesList} from './high-score.js'
+
+const HomeButton = document.querySelector('#LaunchGame')
 
 let App = {
     init(){
-        console.log(Mysterious.generateRandomNumber(100))
-    }
+        Navbar.createNavListener()
+        UI.init()
+        gamesList.load()
+        HomeButton.addEventListener('click', () => {
+            UI.changeTab('Jeu')
+        })
+    },
 }
 
-
-window.addEventListener('load', App.init)
+window.addEventListener('DOMContentLoaded', App.init)

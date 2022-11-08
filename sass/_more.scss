@@ -1,0 +1,61 @@
+#More{
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    h2{
+        margin-bottom: 10px;
+    }
+
+    .box{
+        width: 90%;
+        max-width: 500px;
+        display: flex;
+        justify-content: space-between;
+
+        .left{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40%;
+        }
+        
+        .right{
+            width: 40%;
+            ul {
+                li {
+                    list-style: none;
+                    .githubButton{
+                        width: 100%
+                    }
+                }
+            }
+        }
+    }
+
+    .githubButton {
+        $bc: hsl(240, 20%, 10%);
+        display: inline-block;
+        text-align: center;
+        background-color: $bc;
+        border-radius: 10px;
+        padding: 5px 10px;
+        color: white;
+        text-decoration: none;
+
+        transition: background-color .25s ease, color .1s ease;
+
+        &:hover{
+            background-color: white;
+            color: $bc;
+        }
+    }
+
+    #ProjectButton{
+        margin-top: 10px;
+    }
+}

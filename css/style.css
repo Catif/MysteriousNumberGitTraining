@@ -1,0 +1,272 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsl(240deg, 20%, 90%);
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+.button {
+  display: inline-block;
+  text-align: center;
+  background-color: hsl(240deg, 20%, 10%);
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.1s ease;
+}
+.button:hover {
+  background-color: white;
+  color: hsl(240deg, 20%, 10%);
+}
+
+header {
+  width: 100%;
+  background-color: hsl(240deg, 20%, 10%);
+}
+header nav {
+  width: 90%;
+  max-width: 600px;
+  margin: auto;
+}
+header nav ul {
+  display: flex;
+  justify-content: space-between;
+}
+header nav ul li {
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+header nav ul li button {
+  position: relative;
+  color: white;
+  padding: 5px;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+header nav ul li button.active::after, header nav ul li button::after {
+  content: "";
+  position: absolute;
+  background-color: #cccccc;
+  width: 0%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  transition: width 0.2s ease;
+}
+header nav ul li button.active::after, header nav ul li button:hover::after {
+  width: 100%;
+}
+
+#Home {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#Home h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+#Home p {
+  text-align: center;
+}
+#Home button {
+  margin-top: 20px;
+}
+
+#MysteriousNumber {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+#MysteriousNumber input {
+  width: 200px;
+  padding: 5px 10px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border-radius: 1.5rem;
+  border: 2px solid hsl(240deg, 20%, 10%);
+}
+#MysteriousNumber input#number {
+  width: 80px;
+  text-align: center;
+  appearance: none;
+}
+#MysteriousNumber input:focus {
+  outline: none;
+  border-color: #8585ad;
+}
+
+#inGame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 3px solid hsl(240deg, 20%, 10%);
+  width: 95%;
+  max-width: 600px;
+  height: 25rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+#inGame #sms-list {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  height: 50px;
+  border-bottom: 3px solid hsl(240deg, 20%, 10%);
+  background-color: hsl(240deg, 20%, 15%);
+  overflow-y: scroll;
+  padding: 5px;
+}
+#inGame #sms-list::-webkit-scrollbar {
+  width: 0;
+}
+#inGame #sms-list .sms {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 12px 12px;
+  flex-basis: fit-content;
+  max-width: 42%;
+}
+#inGame #sms-list .sms.bot {
+  border-radius: 0 1rem 1rem 1rem;
+  background-color: rgb(139, 199, 255);
+}
+#inGame #sms-list .sms.user {
+  margin-left: auto;
+  border-radius: 1rem 0 1rem 1rem;
+  background-color: rgb(149, 255, 139);
+}
+#inGame #form {
+  background-color: hsl(240deg, 10%, 40%);
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  height: fit-content;
+  padding: 5px;
+  gap: 10px;
+  align-items: center;
+}
+#inGame #form #btnResult {
+  height: 29px;
+}
+
+#More {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+#More h2 {
+  margin-bottom: 10px;
+}
+#More .box {
+  width: 90%;
+  max-width: 500px;
+  display: flex;
+  justify-content: space-between;
+}
+#More .box .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+}
+#More .box .right {
+  width: 40%;
+}
+#More .box .right ul li {
+  list-style: none;
+}
+#More .box .right ul li .githubButton {
+  width: 100%;
+}
+#More .githubButton {
+  display: inline-block;
+  text-align: center;
+  background-color: hsl(240deg, 20%, 10%);
+  border-radius: 10px;
+  padding: 5px 10px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.25s ease, color 0.1s ease;
+}
+#More .githubButton:hover {
+  background-color: white;
+  color: hsl(240deg, 20%, 10%);
+}
+#More #ProjectButton {
+  margin-top: 10px;
+}
+
+#Scoreboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#Scoreboard table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 20%;
+}
+#Scoreboard table td, #Scoreboard table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+#Scoreboard table tr:nth-child(even) {
+  background-color: hsl(240deg, 70%, 90%);
+}
+#Scoreboard table tr:nth-child(odd) {
+  background-color: hsl(240deg, 40%, 80%);
+}
+#Scoreboard table tr:hover {
+  background-color: #ddd;
+}
+#Scoreboard table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: hsl(240deg, 20%, 10%);
+  color: white;
+}
+
+#Settings {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+#Settings div {
+  padding: 5px;
+}
+#Settings div #nbGamesToRegister {
+  width: 100%;
+}
+#Settings div #nbAttempts {
+  width: 100%;
+}
+#Settings div #nbCharacter {
+  width: 100%;
+}
+
+/*# sourceMappingURL=style.css.map */

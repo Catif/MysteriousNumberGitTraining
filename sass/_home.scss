@@ -1,0 +1,21 @@
+#Home {
+    margin-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    p {
+        text-align: center;
+    }
+
+    button{
+        margin-top: 20px;
+    }
+}
