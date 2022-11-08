@@ -1,7 +1,5 @@
-import { registerGame } from './high-score.js'
 import {changeTab} from './ui.js'
 import {registerScore} from './params.js'
-import {gamesList} from "./high-score.js"
 import {essaisMax} from './params.js'
 
 let generateRandomNumber = function(max){

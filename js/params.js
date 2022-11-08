@@ -1,9 +1,8 @@
-import {registerGame} from "./high-score.js"
-import {gamesList} from "./high-score.js"
+import {registerGame, gamesList} from "./high-score.js"
 
-let nbEssaisMax = 0
-let nbGamesToRegister = 0
-let nbCharacter = 0
+let nbEssaisMax = 10
+let nbGamesToRegister = 5
+let nbCharacter = 30
 
 let buttonRegisterParams = document.getElementById("buttonRegisterParams")
 buttonRegisterParams.addEventListener("click", function () {
