@@ -62,7 +62,6 @@ registerName.addEventListener('click', () => {
 export function run(){
     randomNumber = generateRandomNumber(100)
     essais = 0
-    console.log(randomNumber) // Pour debug
 
     formNumber.style = "";
     getNumber.value = ''

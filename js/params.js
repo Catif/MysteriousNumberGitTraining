@@ -60,9 +60,9 @@ export function registerScore(name, score) {
 
 export function registerParams(){
     let params = [];
-    nbEssaisMax = document.getElementById("nbAttempts").value
-    nbGamesToRegister = document.getElementById("nbGamesToRegister").value
-    nbCharacter = document.getElementById("nbCharacter").value
+    nbEssaisMax = document.getElementById("nbAttempts").value != "" ? document.getElementById("nbAttempts").value : nbEssaisMax
+    nbGamesToRegister = document.getElementById("nbGamesToRegister").value  != "" ? document.getElementById("nbGamesToRegister").value : nbGamesToRegister
+    nbCharacter = document.getElementById("nbCharacter").value  != "" ? document.getElementById("nbCharacter").value : nbCharacter
     params.push(nbEssaisMax)
     params.push(nbGamesToRegister)
     params.push(nbCharacter)
